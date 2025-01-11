@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recovery Graph / Status</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        canvas {
+            margin: 20px 0;
+        }
+
+        .info-box {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .status {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            background-color: #eafaf1;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recovery Graph / Status</h1>
+        <p>Track the recovery progress of the patient:</p>
+
+        <div class="info-box">
+            <p><strong>Patient Name:</strong> John Doe</p>
+            <p><strong>Condition:</strong> Post-surgery recovery</p>
+        </div>
+
+        <canvas id="recoveryChart" width="800" height="400"></canvas>
+
+        <div class="status">
+            <p><strong>Current Status:</strong> Steady improvement observed. No critical concerns at the moment.</p>
+        </div>
+    </div>
+
+    <script>
+        // Artificial recovery data
+        const recoveryData = {
+            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+            values: [50, 60, 70, 75, 85, 95]
+        };
+
+        // Chart initialization
+        const ctx = document.getElementById('recoveryChart').getContext('2d');
+        const recoveryChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: recoveryData.labels,
+                datasets: [{
+                    label: 'Recovery Progress (%)',
+                    data: recoveryData.values,
+                    borderColor: 'rgba(40, 167, 69, 1)',
+                    backgroundColor: 'rgba(40, 167, 69, 0.2)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Time (Weeks)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Recovery Progress (%)'
+                        },
+                        min: 0,
+                        max: 100
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

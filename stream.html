@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>EY Techathon</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css" />
+  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+  <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="assets/vendors/jquery-bar-rating/css-stars.css" />
+  <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+}
+
+.iframe-container {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* Removes iframe border */
+}
+
+@media (max-width: 768px) { /* Small screen size, e.g., tablets and phones */
+  .iframe-container {
+    width: 81%; /* Set width to 81% for smaller screens */
+  }
+}
+
+@media (min-width: 769px) { /* Larger screen size, e.g., desktops */
+  .iframe-container {
+    width: 95%; /* Set width to 93% for larger screens */
+  }
+}
+/* Basic button styling */
+.navbar-toggler {
+  position: fixed;
+  bottom: 20px; /* Adjust the top positioning */
+  left: 10px; /* Position it to the right side */
+  background-color: #ff0854;
+  border: none;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Circular button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+
+/* Styling for the icon */
+.navbar-toggler .mdi {
+  font-size: 24px; /* Icon size */
+  color: white; /* White icon */
+  transition: transform 0.3s ease;
+}
+
+/* When the sidebar is minimized, rotate the icon */
+.navbar-toggler.minimized .mdi {
+  transform: rotate(180deg); /* Rotate the icon */
+}
+
+/* Active state when the button is pressed */
+.navbar-toggler:active .mdi {
+  color: greenyellow; /* Change icon color on active press */
+}
+
+/* Optional: Add some space on the page to avoid covering content */
+body {
+  padding-right: 60px; /* Ensure content doesn't get covered by the button */
+}
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- Sidebar Partial -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <!-- Profile Section -->
+         
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-chevron-double-left"></span>
+        </button>
+        
+        
+
+        <li class="nav-item nav-profile border-bottom">
+          <a href="#" class="nav-link flex-column text-center">
+            <div class="nav-profile-image">
+              <img src="assets/images/viru/doctor.png" alt="profile" />
+            </div>
+            <div class="nav-profile-text d-flex flex-column">
+              <span class="fw-semibold mb-1 mt-2">Dr. Aman Raut</span>
+              <span class="text-secondary icon-sm">Active Patients: 349</span>
+            </div>
+          </a>
+        </li>
+
+        <!-- Section Header -->
+        <li class="pt-2 pb-1">
+          <span class="nav-item-head">Pages</span>
+        </li>
+
+        <!-- Navigation Links -->
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="mdi mdi-compass-outline menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="pt-2 pb-1">
+          <span class="nav-item-head">Doctor Pages</span>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="appointment.html">
+              <i class="mdi mdi-calendar-clock menu-icon"></i>
+              <span class="menu-title">Appointments</span>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="calendar.html">
+              <i class="mdi mdi-calendar-month menu-icon"></i>
+              <span class="menu-title">Calendar</span>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="emergency.html">
+              <i class="mdi mdi-hospital-box menu-icon"></i>
+              <span class="menu-title">Emergency</span>
+            </a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="stream.html">
+              <i class="mdi mdi-video-outline menu-icon"></i>
+              <span class="menu-title">Video Meet</span>
+            </a>
+
+        <li class="pt-2 pb-1">
+          <span class="nav-item-head">Other Pages</span>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="feature1.html">
+            <i class="mdi mdi-feature-search-outline menu-icon"></i>
+            <span class="menu-title">Feature 1</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="feature2.html">
+            <i class="mdi mdi-file-document-outline menu-icon"></i>
+            <span class="menu-title">Feature 2</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="feature3.html">
+            <i class="mdi mdi-account-outline menu-icon"></i>
+            <span class="menu-title">Feature 3</span>
+          </a>
+        </li>
+
+        <!-- Add More Links -->
+        <li class="nav-item">
+          <a class="nav-link" href="settings.html">
+            <i class="mdi mdi-cog-outline menu-icon"></i>
+            <span class="menu-title">Settings</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.html">
+            <i class="mdi mdi-logout menu-icon"></i>
+            <span class="menu-title">Logout</span>
+          </a>
+        </li>
+      </ul> <!-- Navbar Toggler Button -->
+      
+
+    </nav>
+
+    <!-- partial -->
+
+    <!-- partial:partials/_navbar.html -->
+    <!-- Navbar Section -->
+
+
+     
+       
+
+        
+      <!-- Full-Screen iframe Section -->
+      <div class="iframe-container">
+        <iframe src="https://eytechathon1.pythonanywhere.com/" title="Embedded Website"
+          allowfullscreen></iframe>
+      </div>
+      
+    
+
+
+
+    <!-- partial -->
+
+
+
+    <!-- main-panel ends -->
+
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+   
+  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+  
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+  <script src="assets/vendors/chart.js/chart.umd.js"></script>
+  <script src="assets/vendors/flot/jquery.flot.js"></script>
+  <script src="assets/vendors/flot/jquery.flot.resize.js"></script>
+  <script src="assets/vendors/flot/jquery.flot.categories.js"></script>
+  <script src="assets/vendors/flot/jquery.flot.fillbetween.js"></script>
+  <script src="assets/vendors/flot/jquery.flot.stack.js"></script>
+  <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="assets/js/off-canvas.js"></script>
+  <script src="assets/js/misc.js"></script>
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/todolist.js"></script>
+  <script src="assets/js/hoverable-collapse.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page -->
+  <script src="assets/js/proBanner.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <!-- End custom js for this page -->
+</body>
+
+</html>

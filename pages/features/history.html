@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs / Historical Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        canvas {
+            margin: 20px 0;
+        }
+
+        .info-box {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            margin: 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Graphs / Historical Data</h1>
+        <p>Select a parameter to view its historical data:</p>
+        <select id="parameterSelect" onchange="updateGraph()">
+            <option value="bloodPressure">Blood Pressure</option>
+            <option value="glucoseLevels">Glucose Levels</option>
+            <option value="heartRate">Heart Rate</option>
+        </select>
+
+        <div class="info-box">
+            <p><strong>Selected Parameter:</strong> <span id="parameterName">Blood Pressure</span></p>
+            <p><strong>Average Value:</strong> <span id="averageValue">0</span></p>
+            <p class="tooltip">
+                The average value is calculated based on the displayed data points.
+            </p>
+            
+        </div>
+
+        <canvas id="historicalChart" width="800" height="400"></canvas>
+
+        <div class="button-container">
+            <button onclick="downloadImage()">Download Graph</button>
+            <button onclick="resetGraph()">Reset Graph</button>
+        </div>
+    </div>
+
+    <script>
+        // Artificial data
+const data = {
+    bloodPressure: {
+        labels: ['2025-01-01', '2025-01-02', '2025-01-03', '2025-01-04', '2025-01-05', '2025-01-06', '2025-01-07', '2025-01-08', '2025-01-09', '2025-01-10'],
+        values: [120, 122, 118, 121, 119, 123, 125, 124, 120, 121]
+    },
+    glucoseLevels: {
+        labels: ['2025-01-01', '2025-01-02', '2025-01-03', '2025-01-04', '2025-01-05', '2025-01-06', '2025-01-07', '2025-01-08', '2025-01-09', '2025-01-10'],
+        values: [90, 95, 92, 94, 96, 97, 93, 91, 94, 96]
+    },
+    heartRate: {
+        labels: ['2025-01-01', '2025-01-02', '2025-01-03', '2025-01-04', '2025-01-05', '2025-01-06', '2025-01-07', '2025-01-08', '2025-01-09', '2025-01-10'],
+        values: [72, 75, 70, 73, 74, 76, 75, 72, 73, 74]
+    }
+};
+
+
+        // Chart initialization
+        const ctx = document.getElementById('historicalChart').getContext('2d');
+        let chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.bloodPressure.labels,
+                datasets: [{
+                    label: 'Blood Pressure (mmHg)',
+                    data: data.bloodPressure.values,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Date'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        enabled: true
+                    }
+                }
+            }
+        });
+
+        // Update chart based on selected parameter
+        function updateGraph() {
+            const selectedParam = document.getElementById('parameterSelect').value;
+            chart.data.labels = data[selectedParam].labels;
+            chart.data.datasets[0].label = capitalizeFirstLetter(selectedParam.replace(/([A-Z])/g, ' $1')) + ' (mmHg or bpm)';
+            chart.data.datasets[0].data = data[selectedParam].values;
+            chart.update();
+
+            // Update info box
+            document.getElementById('parameterName').textContent = capitalizeFirstLetter(selectedParam.replace(/([A-Z])/g, ' $1'));
+            document.getElementById('averageValue').textContent = calculateAverage(data[selectedParam].values).toFixed(2);
+        }
+
+        // Calculate average value
+        function calculateAverage(values) {
+            const total = values.reduce((acc, value) => acc + value, 0);
+            return total / values.length;
+        }
+
+        // Capitalize first letter of words for labels
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        // Download graph as an image
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'graph.png';
+            link.href = chart.toBase64Image();
+            link.click();
+        }
+
+        // Reset graph to default state
+        function resetGraph() {
+            document.getElementById('parameterSelect').value = 'bloodPressure';
+            updateGraph();
+        }
+
+        // Initialize info box
+        document.getElementById('averageValue').textContent = calculateAverage(data.bloodPressure.values).toFixed(2);
+    </script>
+</body>
+</html>
