@@ -102,14 +102,7 @@ body {
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <ul class="nav">
         <!-- Profile Section -->
-         
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="mdi mdi-chevron-double-left"></span>
-        </button>
-        
-        
-
-        <li class="nav-item nav-profile border-bottom mb-3">
+        <li class="nav-item nav-profile border-bottom mb-3"> <!-- Added 'mb-3' for spacing -->
           <a href="#" class="nav-link flex-column text-center">
             <div class="nav-profile-image">
               <img src="assets/images/viru/doctor.png" alt="profile" />
@@ -120,11 +113,11 @@ body {
             </div>
           </a>
         </li>
-
         <!-- Section Header -->
         <li class="pt-2 pb-1">
           <span class="nav-item-head">Pages</span>
         </li>
+        
 
         <!-- Navigation Links -->
         <li class="nav-item">
@@ -135,58 +128,62 @@ body {
         </li>
 
         <li class="pt-2 pb-1">
-          <span class="nav-item-head">Doctor Pages</span>
+          <span class="nav-item-head">Management</span>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="appointment.html">
             <i class="mdi mdi-calendar-clock menu-icon"></i>
-            <span class="menu-title">Appointments</span>
+            <span class="menu-title">Weekly Appointments</span>
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="calendar.html">
             <i class="mdi mdi-calendar-month menu-icon"></i>
-            <span class="menu-title">Calendar</span>
+            <span class="menu-title">Monthly Schedule</span>
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="emergency.html">
             <i class="mdi mdi-hospital-box menu-icon"></i>
-            <span class="menu-title">Emergency</span>
+            <span class="menu-title">Emergency Requets</span>
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="https://eytechathon1.pythonanywhere.com/">
             <i class="mdi mdi-video-outline menu-icon"></i>
-            <span class="menu-title">Video Meet</span>
+            <span class="menu-title">Video Consultation</span>
           </a>
         </li>
 
         <li class="pt-2 pb-1">
-          <span class="nav-item-head">Other Pages</span>
+          <span class="nav-item-head">Patient Section</span>
         </li>
-        
+
         <li class="nav-item">
-          <a class="nav-link" href="feature1.html">
-            <i class="mdi mdi-feature-search-outline menu-icon"></i>
-            <span class="menu-title">Feature 1</span>
+          <a class="nav-link" href="addpatients.html">
+            <i class="mdi mdi-account-plus-outline menu-icon"></i>
+            <span class="menu-title">Add Patients</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="feature2.html">
-            <i class="mdi mdi-file-document-outline menu-icon"></i>
-            <span class="menu-title">Feature 2</span>
+          <a class="nav-link" href="patient_dashboard.html">
+            <i class="mdi mdi-chart-line menu-icon"></i>
+            <span class="menu-title">Patient Dashboard</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="feature3.html">
-            <i class="mdi mdi-account-outline menu-icon"></i>
-            <span class="menu-title">Feature 3</span>
+          <a class="nav-link" href="patient_report.html">
+            <i class="mdi mdi-file-document menu-icon"></i>
+            <span class="menu-title">Patient Reports</span>
           </a>
+        </li>
+
+        <li class="pt-2 pb-1">
+          <span class="nav-item-head">Autherization</span>
         </li>
 
         <!-- Add More Links -->
@@ -202,9 +199,7 @@ body {
             <span class="menu-title">Logout</span>
           </a>
         </li>
-      </ul> <!-- Navbar Toggler Button -->
-      
-
+      </ul>
     </nav>
 
     <!-- partial -->
